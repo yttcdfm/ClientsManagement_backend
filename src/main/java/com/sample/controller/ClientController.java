@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 顧客情報管理.
+ * 顧客情報管理いえい.
  *
  * @author yttak
  */
