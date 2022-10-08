@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sample.mapper.ClientMapper">
+  <resultMap id="clientMap"
+    type="com.sample.domain.model.Client">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="familyname" jdbcType="VARCHAR" property="familyname" />
+    <result column="firstname" jdbcType="VARCHAR" property="firstname" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+  </resultMap>
+  <select id="selectAll" resultMap="clientMap">
+    select id, familyname, firstname, address, created_at from clients;
+  </select>
+</mapper>
