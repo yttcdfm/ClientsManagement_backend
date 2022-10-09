@@ -14,5 +14,13 @@ public interface ClientRepository {
    *
    * @return 顧客情報のリスト
    */
-  public List<Client> getAll();
+  List<Client> getAll();
+  
+  /**
+   * 顧客情報を1件登録.
+   *
+   * @param client 顧客情報
+   * @return 顧客情報
+   */
+  Client post(Client client);
 }

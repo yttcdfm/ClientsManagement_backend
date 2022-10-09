@@ -22,4 +22,19 @@ public class ClientRepositoryImpl implements ClientRepository {
     return mapper.selectAll();
   }
 
+  @Override
+  public Client post(Client client) {
+    Client ret = null;
+    int registeredCount = mapper.insert(client);
+    
+    // 登録失敗
+    if (registeredCount != 1) {
+      return ret;
+    }
+    
+    ret = mapper.selectOne(client.getId());
+    
+    return ret;
+  }
+
 }

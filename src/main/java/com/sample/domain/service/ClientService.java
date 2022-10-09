@@ -25,4 +25,14 @@ public class ClientService {
   public List<Client> getAll() {
     return repository.getAll();
   }
+  
+  /**
+   * 顧客情報を1件登録する.
+   *
+   * @param client 顧客情報
+   * @return 顧客情報
+   */
+  public Client post(Client client) {
+    return repository.post(client);
+  }
 }

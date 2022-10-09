@@ -12,4 +12,10 @@
   <select id="selectAll" resultMap="clientMap">
     select id, familyname, firstname, address, created_at from clients;
   </select>
+  <select id="selectOne" resultMap="clientMap" parameterType="int">
+    select id, familyname, firstname, address, created_at from clients where id=#{id};
+  </select>
+  <insert id="insert" parameterType="com.sample.domain.model.Client" useGeneratedKeys="true" keyProperty="id">
+    insert into clients (familyname, firstname, address) values (#{familyname}, #{firstname}, #{address});
+  </insert>
 </mapper>
