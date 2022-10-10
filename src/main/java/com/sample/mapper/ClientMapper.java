@@ -2,6 +2,8 @@ package com.sample.mapper;
 
 import com.sample.domain.model.Client;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -33,4 +35,20 @@ public interface ClientMapper {
    * @return 登録件数
    */
   int insert(Client client);
+  
+  /**
+   * 顧客情報を複数件更新.
+   *
+   * @param editTargets 編集対象のリソースの配列
+   * @return 更新後の顧客情報のリスト
+   */
+  int updateMany(List<Client> editTargets);
+  
+  /**
+   * 顧客情報を複数件削除.
+   *
+   * @param deleteTargets 削除対象のIDの配列
+   * @return 削除件数
+   */
+  int delete(List<Integer> deleteTargets);
 }

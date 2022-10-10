@@ -18,4 +18,22 @@
   <insert id="insert" parameterType="com.sample.domain.model.Client" useGeneratedKeys="true" keyProperty="id">
     insert into clients (familyname, firstname, address) values (#{familyname}, #{firstname}, #{address});
   </insert>
+  <update id="updateMany">
+    <foreach collection="editTargets" item="item" separator=";">
+      update
+        clients
+      set
+        familyname = #{item.familyname}
+        ,firstname = #{item.firstname}
+        ,address = #{item.address}
+      where
+        id=#{item.id};
+    </foreach>
+  </update>
+  <delete id="delete">
+    delete from clients where
+    <foreach collection="deleteTargets" item="item" separator="or" close=";">
+      id=#{item}
+    </foreach>
+  </delete>
 </mapper>

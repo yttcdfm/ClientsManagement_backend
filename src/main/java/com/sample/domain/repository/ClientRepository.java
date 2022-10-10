@@ -23,4 +23,20 @@ public interface ClientRepository {
    * @return 顧客情報
    */
   Client post(Client client);
+  
+  /**
+   * 顧客情報を複数件更新.
+   *
+   * @param editTargets 編集対象のリソースの配列
+   * @return 更新後の顧客情報のリスト
+   */
+  List<Client> updateClients(List<Client> editTargets);
+  
+  /**
+   * 顧客情報を複数件削除.
+   *
+   * @param deleteTargets 削除対象のIDの配列
+   * @return 削除件数
+   */
+  Integer delete(List<Integer> deleteTargets);
 }

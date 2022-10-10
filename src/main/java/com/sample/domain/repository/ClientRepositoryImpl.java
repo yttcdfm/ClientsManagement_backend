@@ -2,6 +2,7 @@ package com.sample.domain.repository;
 
 import com.sample.domain.model.Client;
 import com.sample.mapper.ClientMapper;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -37,4 +38,28 @@ public class ClientRepositoryImpl implements ClientRepository {
     return ret;
   }
 
+  @Override
+  public List<Client> updateClients(List<Client> editTargets) {
+    List<Client> ret = null;
+    
+    int beforeCount = editTargets.size();
+    int afterCount = mapper.updateMany(editTargets);
+    
+    if (beforeCount != afterCount) {
+      return ret;
+    }
+    
+    ret = new ArrayList<Client>();
+    
+    for (Client client : editTargets) {
+      ret.add(mapper.selectOne(client.getId()));
+    }
+    
+    return ret;
+  }
+
+  @Override
+  public Integer delete(List<Integer> deleteTargets) {
+    return mapper.delete(deleteTargets);
+  }
 }
